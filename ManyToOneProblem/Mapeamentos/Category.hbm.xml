@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   namespace="ManyToOneProblem.Entidades" assembly="ManyToOneProblem">
+
+  <class name="Category" lazy="false" >
+    <id name="Id" column="id" type="long">
+      <generator class="native" />
+    </id>
+    <property     name="Description"  type="string"  length="5000"  not-null="false"/>
+
+  </class>
+</hibernate-mapping>
