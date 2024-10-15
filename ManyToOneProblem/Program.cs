@@ -43,6 +43,26 @@ namespace ManyToOneProblem
             using var sessionQuery = NHibernateHelper.OpenSession();
             var queryProducts = sessionQuery.Query<ProductTax>().ToList(); // query all
             Console.WriteLine("====================== END of query ======================");
+            Console.WriteLine("====================== Starting query 2 - QUERYOVER ======================");
+            var queryProducts2 = sessionQuery.QueryOver<ProductTax>().List(); // query all
+            Console.WriteLine("====================== END of query ======================");
+
+            Console.WriteLine("====================== Starting query 3 - IQUERYABLE ======================");
+            var queryProducts3 = from p in sessionQuery.Query<ProductTax>()
+                                 join pt in sessionQuery.Query<Product>() on p.Id equals pt.Id
+                                 select new ProductTax
+                                 {
+                                     Id = p.Id,
+                                     Product = pt,
+                                     Tax1 = p.Tax1,
+                                     Tax2 = p.Tax2,
+                                     Tax3 = p.Tax3,
+                                 };
+                ;
+            var list = queryProducts3.ToList();
+            // query all
+            Console.WriteLine("====================== END of query ======================");
+
 
             foreach (var p in queryProducts)
             {

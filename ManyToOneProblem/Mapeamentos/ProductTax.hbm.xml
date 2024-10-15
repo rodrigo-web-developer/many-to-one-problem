@@ -18,6 +18,7 @@
                 fetch="join"
                 name="Product" 
                 lazy="false" 
+                constrained="true"
                 cascade="all" />
 
   </class>

@@ -6,7 +6,7 @@
     <property name="dialect">NHibernate.Dialect.PostgreSQLDialect, NHibernate</property>
 
 
-    <property name="connection.connection_string">Server=localhost;Port=5432;Database=manytooneproblem;User Id=postgres;Password=DATABASE_PASSWORD;</property>
+    <property name="connection.connection_string">Server=localhost;Port=5432;Database=manytooneproblem;User Id=postgres;Password=123@postgres;</property>
 
     <property name="default_schema">public</property>
     <property name="show_sql">true</property>
