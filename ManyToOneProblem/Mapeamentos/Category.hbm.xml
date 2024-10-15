@@ -2,7 +2,7 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    namespace="ManyToOneProblem.Entidades" assembly="ManyToOneProblem">
 
-  <class name="Category" lazy="false" >
+  <class batch-size="100" name="Category" lazy="false" >
     <id name="Id" column="id" type="long">
       <generator class="native" />
     </id>

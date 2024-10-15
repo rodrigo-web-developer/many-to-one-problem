@@ -1,6 +1,5 @@
 ﻿using ManyToOneProblem.Entidades;
 using ManyToOneProblem.Repository;
-using NHibernate.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,19 +30,23 @@ namespace ManyToOneProblem
             foreach (var category in categories)
             {
                 var product = new Product { Category = category, Description = "Product from category " + category.Id, Price = 1 };
+                var productTax = new ProductTax { Tax1 = 1.5, Tax2 = 2.5, Tax3 = 3.56 };
                 products.Add(product);
                 using var session = NHibernateHelper.OpenSession();
                 using var transaction = session.BeginTransaction();
-                session.Save(product);
+                productTax.Product = product;
+                session.Save(productTax);
                 transaction.Commit();
             }
-            Console.WriteLine("Starting query...");
+
+            Console.WriteLine("====================== Starting query ======================");
             using var sessionQuery = NHibernateHelper.OpenSession();
-            var queryProducts = sessionQuery.Query<Product>()/*.Fetch(e => e.Category)*/.ToList(); // query all
+            var queryProducts = sessionQuery.Query<ProductTax>().ToList(); // query all
+            Console.WriteLine("====================== END of query ======================");
 
             foreach (var p in queryProducts)
             {
-                Console.WriteLine("{0} - {1}", p.Id, p.Description);
+                Console.WriteLine("{0} - {1}", p.Id, p.Product.Description);
             }
             Console.WriteLine("Finishing!");
         }

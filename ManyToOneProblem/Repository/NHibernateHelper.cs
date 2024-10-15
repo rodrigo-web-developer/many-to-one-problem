@@ -12,7 +12,6 @@ namespace ManyToOneProblem.Repository
         private static ISessionFactory sessionFactory;
         private static string _path;
 
-        private static string ConfigurationFile => Path.Combine(GetPath(), "nhibernate.cfg.xml");
         private static ISessionFactory SessionFactory()
         {
             if (sessionFactory != null) return sessionFactory;
@@ -27,18 +26,9 @@ namespace ManyToOneProblem.Repository
             get
             {
                 if (configuration != null) return configuration;
-                configuration = new Configuration().Configure(ConfigurationFile);
+                configuration = new Configuration().Configure();
                 return configuration;
             }
-        }
-
-
-        public static string GetPath()
-        {
-            if (_path != null) return _path;
-            var x = new Uri(Assembly.GetExecutingAssembly().CodeBase);
-            _path = Path.GetDirectoryName(x.LocalPath);
-            return _path;
         }
 
         public static void CreateDb()

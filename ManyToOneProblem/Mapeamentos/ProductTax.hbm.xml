@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   namespace="ManyToOneProblem.Entidades" assembly="ManyToOneProblem">
+
+  <class batch-size="100" name="ProductTax" lazy="false" >
+    <id name="Id" column="id" type="long">
+      <generator class="foreign">
+        <param name="property">Product</param>
+      </generator>
+    </id>
+    
+    <property     name="Tax1"  type="double"    not-null="true" />
+    <property     name="Tax2"  type="double"    not-null="true" />
+    <property     name="Tax3"  type="double"    not-null="true" />
+
+    <one-to-one class="Product" 
+                foreign-key="fk_producttax_product"
+                fetch="join"
+                name="Product" 
+                lazy="false" 
+                cascade="all" />
+
+  </class>
+</hibernate-mapping>

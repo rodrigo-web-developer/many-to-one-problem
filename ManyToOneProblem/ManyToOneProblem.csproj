@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="hibernate.cfg.xml" />
     <None Remove="Mapeamentos\Category.hbm.xml" />
-    <None Remove="nhibernate.cfg.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,14 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="nhibernate.cfg.xml">
+    <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NHibernate" Version="5.4.6" />
-    <PackageReference Include="Npgsql" Version="7.0.4" />
+    <PackageReference Include="NHibernate" Version="5.5.2" />
+    <PackageReference Include="Npgsql" Version="8.0.5" />
   </ItemGroup>
 
 </Project>
