@@ -1,5 +1,8 @@
 # many-to-one-problem
-Example of N+1 Problem with NHibernate v5.4.6
+Example of N+1 Problem with NHibernate v5.5.2
+
+# MANY-TO-ONE SOLVED
+Adding batch-size solved many-to-one relation, but it seems not to work with one-to-one
 
 # Reproduce steps
 - Clone repository
