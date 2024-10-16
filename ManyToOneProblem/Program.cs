@@ -43,14 +43,15 @@ namespace ManyToOneProblem
             Console.WriteLine("====================== QUERY PRODUCTS FIRST ======================");
             var queryProducts0 = sessionQuery.Query<Product>().ToList(); // query all
             Console.WriteLine("====================== END of query ======================");
-
+            sessionQuery.Clear(); // clear session is needed to not track entity objects
             Console.WriteLine("====================== Starting query ======================");
             var queryProducts = sessionQuery.Query<ProductTax>().ToList(); // query all
             Console.WriteLine("====================== END of query ======================");
+            sessionQuery.Clear();
             Console.WriteLine("====================== Starting query 2 - QUERYOVER ======================");
             var queryProducts2 = sessionQuery.QueryOver<ProductTax>().List(); // query all
             Console.WriteLine("====================== END of query ======================");
-
+            sessionQuery.Clear();
             Console.WriteLine("====================== Starting query 3 - IQUERYABLE ======================");
             var queryProducts3 = from p in sessionQuery.Query<ProductTax>()
                                  join pt in sessionQuery.Query<Product>() on p.Id equals pt.Id
@@ -62,7 +63,7 @@ namespace ManyToOneProblem
                                      Tax2 = p.Tax2,
                                      Tax3 = p.Tax3,
                                  };
-                ;
+            ;
             var list = queryProducts3.ToList();
             // query all
             Console.WriteLine("====================== END of query ======================");
