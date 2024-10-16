@@ -1,16 +1,12 @@
 ﻿using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using System;
-using System.IO;
-using System.Reflection;
 
 namespace ManyToOneProblem.Repository
 {
     public static class NHibernateHelper
     {
         private static ISessionFactory sessionFactory;
-        private static string _path;
 
         private static ISessionFactory SessionFactory()
         {
@@ -41,6 +37,5 @@ namespace ManyToOneProblem.Repository
         {
             return SessionFactory().OpenSession();
         }
-
     }
 }
