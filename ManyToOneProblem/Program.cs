@@ -38,9 +38,13 @@ namespace ManyToOneProblem
                 session.Save(productTax);
                 transaction.Commit();
             }
+            using var sessionQuery = NHibernateHelper.OpenSession();
+
+            Console.WriteLine("====================== QUERY PRODUCTS FIRST ======================");
+            var queryProducts0 = sessionQuery.Query<Product>().ToList(); // query all
+            Console.WriteLine("====================== END of query ======================");
 
             Console.WriteLine("====================== Starting query ======================");
-            using var sessionQuery = NHibernateHelper.OpenSession();
             var queryProducts = sessionQuery.Query<ProductTax>().ToList(); // query all
             Console.WriteLine("====================== END of query ======================");
             Console.WriteLine("====================== Starting query 2 - QUERYOVER ======================");
