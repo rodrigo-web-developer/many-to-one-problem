@@ -8,6 +8,6 @@ Adding batch-size solved many-to-one relation, but it seems not to work with one
 - Clone repository
 - Open solution in Visual Studio
 - Create a Postgres Database
-- Set connection string in "nhibernate.cfg.xml" file
+- Set connection string in "hibernate.cfg.xml" file
 - Run application
 - See the console output for the Query
